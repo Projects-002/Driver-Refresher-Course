@@ -1,0 +1,15 @@
+/* styles.css */
+/* Minor adjustments since Bootstrap handles most of the layout */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.course-card, .assessment-card {
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
