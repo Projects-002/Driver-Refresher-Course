@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['user'])){
+    header('location: index.php');
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,12 +45,12 @@
                     <div class="card-body">
                         <div class="course-card mb-3">
                             <h3>Pre-Licensing Course(Mandatory)</h3>
-                            <p>Progress: 70%</p>
+                            <!-- <p>Progress: 70%</p> -->
                            <a href="license.php"><button class="btn btn-success">Continue Course</button></a>
                         </div>
                         <div class="course-card">
                             <h3>Defensive driving Course</h3>
-                            <p>Progress: 40%</p>
+                            <!-- <p>Progress: 40%</p> -->
                             <button class="btn btn-success">Continue Course</button>
                         </div>
                     </div>

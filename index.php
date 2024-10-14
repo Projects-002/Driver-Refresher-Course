@@ -1,81 +1,126 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Responsive Login Form</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h2>Login</h2>
-                    </div>
-                    <div class="card-body">
-                        <form id="loginForm">
-                            <div class="form-group">
-                                <label for="emailPhone">Email or Phone</label>
-                                <input type="text" class="form-control" id="emailPhone" placeholder="Enter email or phone" required>
-                                <div class="invalid-feedback" id="emailPhoneError">Please enter a valid email or phone number.</div>
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
-                                <div class="invalid-feedback" id="passwordError">Password is required.</div>
-                            </div>
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+
+<!-- PHP START -->
+<?php
+
+include ('database/db.php');
+
+if(isset($_POST['submit'])){
+
+                    
+
+                        $phone = $_POST['phone'];
+                        $pass = $_POST['pass'];
+
+// Code with HOPE DEVELOPERS
+
+
+                        $sql = "SELECT * FROM drivers where Phone = '$phone'";
+                        $result =  mysqli_query($conn, $sql);
+
+
+                        $row = mysqli_num_rows($result);
+
+                        if($row>0){
+
+                            $user = mysqli_fetch_assoc($result);
+                            $password = $user['Pass'];
+                            $user_id = $user['SN'];
+
+                            if($pass != $password){
+                                echo"
+                                <div class='alert alert-danger' role='alert'>
+                                    We could not verify your Password! kindly check and try again!
+                                </div>
+                                ";
+                            }else{
+                                header('location: dashboard.php?uid='.$user_id.'');
+                                session_start();
+                                $_SESSION['user'] = $user_id;
+                            }
+
+                        }else{
+                            echo"
+                               <div class='alert alert-danger' role='alert'>
+                                   Incorrect Phone number! try again
+                               </div></br>
+                            ";
+
+                        }
+
+
+}
+ 
+?>
+
+<!-- PHP END -->
+
+
+
+
+
+<div class="login-container">
+    <h2 class="text-center">Login</h2>
+    <form action='index.php' method='POST'>
+        <div class="mb-3">
+            <label for="email" class="form-label">Phone</label>
+            <input type="tel" class="form-control" name='phone' id="phone" placeholder="Enter your phone" required>
         </div>
-    </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name='pass' id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+        <button type="submit" name='submit' class="btn btn-primary">Login</button>
+    </form>
+</div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JavaScript for form validation -->
-    <script>
-        // Function to validate email or phone format
-        function validateEmailPhone(input) {
-            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-            const phonePattern = /^[0-9]{10}$/;
-            return emailPattern.test(input) || phonePattern.test(input);
-        }
-
-        // Form validation
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const emailPhone = document.getElementById('emailPhone').value.trim();
-            const password = document.getElementById('password').value.trim();
-
-            // Validate Email/Phone
-            if (!validateEmailPhone(emailPhone)) {
-                document.getElementById('emailPhone').classList.add('is-invalid');
-            } else {
-                document.getElementById('emailPhone').classList.remove('is-invalid');
-            }
-
-            // Validate Password
-            if (password === '') {
-                document.getElementById('password').classList.add('is-invalid');
-            } else {
-                document.getElementById('password').classList.remove('is-invalid');
-            }
-
-            // If both fields are valid, submit the form
-            if (validateEmailPhone(emailPhone) && password !== '') {
-                alert('Form submitted successfully!');
-                // You can handle the actual login logic here (e.g., send data to the server)
-            }
-        });
-    </script>
 </body>
 </html>
