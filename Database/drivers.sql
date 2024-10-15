@@ -38,15 +38,15 @@ CREATE TABLE `drivers` (
   `Payment` int NOT NULL,
   `Pass` varchar(255) NOT NULL,
   `Reg_Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data for table `drivers`
 --
 
-INSERT INTO `drivers` (`SN`, `First_Name`, `Last_Name`, `License_Class`, `Id_No`, `Email`, `Phone`, `Payment`, `Pass`, `Reg_Date`) VALUES
-(3, 'Ruth', 'Muraguri', 'B', 34567773, 'ruth@gmail.com', '0723076762', 1000, '@ruth123', '2024-10-15 00:06:50'),
-(4, 'Ismael', 'Bett', 'A', 27400044, 'bett@gmail.com', '0723070762', 1000, '@bett123', '2024-10-15 00:06:50');
+INSERT INTO `drivers` (`First_Name`, `Last_Name`, `License_Class`, `Id_No`, `Email`, `Phone`, `Payment`, `Pass`) VALUES
+('Ruth', 'Muraguri', 'B', 34567773, 'ruth@gmail.com', '0723076762', 1000, '@ruth123'),
+('Ismael', 'Bett', 'A', 27400044, 'bett@gmail.com', '0723070762', 1000, '@bett123');
 
 --
 -- Indexes for dumped tables
