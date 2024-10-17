@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +83,6 @@ if ($conn->query($sql) === TRUE) {
     } else {
         echo "
         
-        <span style='font-size:100px;'>&#128530;</span> <br>
         
         <p class='bg-danger text-light py-1 px-2'> Unfortunately, you did not pass. Please try again. </p>
         
