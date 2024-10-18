@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +54,6 @@ if(isset($_POST['submit'])){
 
 // Code with HOPE DEVELOPERS
 
-
                         $sql = "SELECT * FROM drivers where Phone = '$phone'";
                         $result =  mysqli_query($conn, $sql);
 
@@ -95,9 +93,6 @@ if(isset($_POST['submit'])){
 ?>
 
 <!-- PHP END -->
-
-
-
 
 
 <div class="login-container">

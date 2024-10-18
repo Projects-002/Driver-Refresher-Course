@@ -127,6 +127,8 @@ if(!isset($_SESSION['user'])){
 
             nextButton.addEventListener('click', function () {
                 if (currentStep < steps.length - 1) {
+
+
                     currentStep++;
                     showStep(currentStep);
                 }

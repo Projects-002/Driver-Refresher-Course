@@ -86,7 +86,7 @@ if ($conn->query($sql) === TRUE) {
         
         <p class='bg-danger text-light py-1 px-2'> Unfortunately, you did not pass. Please try again. </p>
         
-       <a href='courses.php'> <butto class='btn btn-secondary'>Back to Course</button></a>
+       <a href='license.php'> <butto class='btn btn-secondary'>Back to Course</button></a>
         
         ";
     }
