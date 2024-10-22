@@ -1,3 +1,26 @@
+<?php
+
+
+include('../database/db.php');
+
+
+// Get users
+
+$driver = "SELECT * FROM Drivers";
+$feed = mysqli_query($conn, $driver);
+$rows = mysqli_num_rows($feed);
+
+
+
+
+// Get responses
+$assessements = "SELECT * FROM Responses";
+$result = mysqli_query($conn, $assessements);
+$certified = mysqli_num_rows($result);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -614,7 +637,17 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Users</p>
-                          <h4 class="card-title">1,294</h4>
+
+
+                          <?php
+
+
+                        echo'
+                        <h4 class="card-title">'.$rows.'</h4>
+                        ';
+
+                        
+                          ?>
                         </div>
                       </div>
                     </div>
@@ -635,7 +668,15 @@
                       <div class="col col-stats ms-3 ms-sm-0">
                         <div class="numbers">
                           <p class="card-category">Assessed</p>
-                          <h4 class="card-title">1303</h4>
+
+
+                          <?php
+                            echo'
+                            <h4 class="card-title">'.$certified.'</h4>
+                            ';
+
+                         ?>
+
                         </div>
                       </div>
                     </div>

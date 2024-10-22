@@ -1,96 +1,171 @@
+<?php
+
+include('database/db.php');
+
+$sn = $_GET['uid'];
+// Read Drivers id
+$driver = "SELECT * FROM Drivers where SN = $sn";
+$feed = mysqli_query($conn, $driver);
+$get_id = mysqli_fetch_assoc($feed);
+$D_id = $get_id["Id_No"];
+$f_name = $get_id['First_Name'];
+$l_name = $get_id['Last_Name'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/cert.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Certificate of Completion</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f0f2f5;
+        }
+        .certificate-container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            position: relative;
+            border: 10px solid #f4f4f4;
+            border-radius: 15px;
+        }
+        .certificate-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .certificate-header h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2f2f37;
+        }
+        .certificate-header h2 {
+            font-size: 1.5rem;
+            font-weight: normal;
+            color: #2f2f37;
+            margin-bottom: 50px;
+        }
+        .certificate-awardee {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: normal;
+            margin-top: -20px;
+            padding-bottom: 10px;
+        }
+        .certificate-body {
+            text-align: center;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        .certificate-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            padding: 0 60px;
+        }
+        .certificate-footer .signature {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .certificate-footer .signature p {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #2f2f37;
+        }
+        .certificate-footer .signature small {
+            font-size: 1rem;
+            color: #888;
+        }
+        .certificate-badge {
+            text-align: center;
+            margin: 20px;
+        }
+        .certificate-badge img {
+            width: 50px;
+        }
+
+        /* Borders */
+        .outer-border {
+            position: absolute;
+            top: -25px;
+            left: -25px;
+            right: -25px;
+            bottom: -25px;
+            border: 8px solid #f2f2f2;
+        }
+
+        .inner-border {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border: 4px solid #c7a64b;
+        }
+
+        /* Decorative line under the awardee name */
+        .decorative-line {
+            width: 150px;
+            height: 3px;
+            background-color: #c7a64b;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-  <div class="container pm-certificate-container">
-    <div class="outer-border"></div>
-    <div class="inner-border"></div>
-    
-    <div class="pm-certificate-border col-xs-12">
-      <div class="row pm-certificate-header">
-        <div class="pm-certificate-title cursive col-xs-12 text-center">
-          <h2>Certificate of Completion</h2>
-        </div>
-      </div>
 
-      <div class="row pm-certificate-body">
-        
-        <div class="pm-certificate-block">
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                <div class="pm-certificate-name underline margin-0 col-xs-8 text-center">
-                  <span class="pm-name-text bold">TrueNorth Administrator</span>
-                </div>
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-              </div>
-            </div>          
+    <div class="certificate-container">
+        <!-- Borders -->
+        <div class="outer-border"></div>
+        <div class="inner-border"></div>
 
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                <div class="pm-earned col-xs-8 text-center">
-                  <span class="pm-earned-text padding-0 block cursive">has earned</span>
-                  <span class="pm-credits-text block bold sans">PD175: 1.0 Credit Hours</span>
-                </div>
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                <div class="col-xs-12"></div>
-              </div>
-            </div>
-            
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                <div class="pm-course-title col-xs-8 text-center">
-                  <span class="pm-earned-text block cursive">while completing the training course entitled</span>
-                </div>
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-              </div>
-            </div>
-
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-                <div class="pm-course-title underline col-xs-8 text-center">
-                  <span class="pm-credits-text block bold sans">BPS PGS Initial PLO for Principals at Cluster Meetings</span>
-                </div>
-                <div class="col-xs-2"><!-- LEAVE EMPTY --></div>
-              </div>
-            </div>
-        </div>       
-        
-        <div class="col-xs-12">
-          <div class="row">
-            <div class="pm-certificate-footer">
-                <div class="col-xs-4 pm-certified col-xs-4 text-center">
-                  <span class="pm-credits-text block sans">Buffalo City School District</span>
-                  <span class="pm-empty-space block underline"></span>
-                  <span class="bold block">Crystal Benton Instructional Specialist II, Staff Development</span>
-                </div>
-                <div class="col-xs-4">
-                  <!-- LEAVE EMPTY -->
-                </div>
-                <div class="col-xs-4 pm-certified col-xs-4 text-center">
-                  <span class="pm-credits-text block sans">Date Completed</span>
-                  <span class="pm-empty-space block underline"></span>
-                  <span class="bold block">DOB: </span>
-                  <span class="bold block">Social Security # (last 4 digits)</span>
-                </div>
-            </div>
-          </div>
+        <!-- Header -->
+        <div class="certificate-header">
+            <h1>Certificate of Completion</h1>
+            <h2>This is awarded to</h2>
+            <div class="decorative-line"></div>
         </div>
 
-      </div>
+        <!-- Awardee Name -->
+        <div class="certificate-awardee">                  
+            <?php
+                echo'
+                <p> '.$f_name.' '.$l_name.'</p>
 
+                ';
+             ?>
+            </div>
+
+        <!-- Certificate Body -->
+        <div class="certificate-body">
+            <p>demonstrated proficiency in the required knowledge and skills for safe driving.</p>
+        </div>
+
+        <!-- Footer with Signatures and Badge -->
+        <div class="certificate-footer">
+            <div class="signature">
+                <hr>
+                <p>Ruth M</p>
+                <small>Head Manager</small>
+            </div>
+            <div class="certificate-badge">
+                <img src="https://img.icons8.com/emoji/48/000000/sports-medal-emoji.png" alt="Medal Icon">
+            </div>
+            <div class="signature">
+                <hr>
+                <p>Ismael Bett</p>
+                <small>CEO and Founder</small>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>

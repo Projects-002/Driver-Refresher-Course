@@ -60,21 +60,37 @@ foreach ($correct_answers as $question => $correct_answer) {
 $percentage_score = ($score / $total_questions) * 100;
 
 // Store user's answers and score in the database
-$sql = "INSERT INTO quiz_responses (q1, q2, q3, q4, q5, q6, score) VALUES ('$q1', '$q2', '$q3', '$q4', '$q5', '$q6', '$score')";
 
-if ($conn->query($sql) === TRUE) {
-    // Display the score to the user
-    echo " 
-    <div class='container d-flex align-items-center justify-content-center flex-column '>   
-    
-    <h1>Quiz submitted successfully!</h1>
-    <h3>Your score is: $score out of $total_questions.</h3>
-    <h3>Your percentage score is: " . round($percentage_score, 2). "%.</h3>
-    </div>
 
-    
-      
-    ";
+    $sn = $_GET['sn'];
+
+$user = "SELECT * FROM Drivers where SN = $sn";
+$result = mysqli_query($conn, $user);
+$user = mysqli_fetch_assoc($result);
+
+
+
+$Name = $user["First_Name"];
+$Category = $user['License_Class'];
+$id = $user['Id_No'];
+$serial = $user['SN'];
+
+$sql = "INSERT INTO Responses (id, Driver_Name, Category, Id_Num ,score) VALUES ($serial ,'$Name', '$Category', '$id', '$percentage_score')";
+
+
+try{
+
+    if ($conn->query($sql) === TRUE) {
+        // Display the score to the user
+        echo " 
+        <div class='container d-flex align-items-center justify-content-center flex-column '>   
+        
+        <h1>Quiz submitted successfully!</h1>
+        <h3>Your score is: $score out of $total_questions.</h3>
+        <h3>Your percentage score is: " . round($percentage_score, 2). "%.</h3>
+        </div>
+        
+        ";
 
 
     // Determine if the user passed or failed
@@ -92,6 +108,17 @@ if ($conn->query($sql) === TRUE) {
     }
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+}catch(mysqli_sql_exception){
+
+    echo'
+    <div class="alert alert-warning mt-5" role="alert">
+        You have already done the Test Kindly wait for the Feedback <a href="#" class="alert-link">Home</a>.
+     </div>
+    ';
+
+   
 }
 
 // Close connection

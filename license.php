@@ -6,6 +6,8 @@ if(!isset($_SESSION['user'])){
     header('location: index.php');
 }
 
+$sn = $_GET['sn'];
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +29,11 @@ if(!isset($_SESSION['user'])){
             <div id="progressBar" class="progress-bar bg-success" style="width: 0%">0%</div>
         </div>
 
-        <form id="quizForm" action="process_quiz.php" method="POST">
+        <?php
+       echo'
+        <form id="quizForm" action="process_quiz.php?sn='.$sn.'" method="POST">
+        ';
+        ?>
             <!-- Section 1: Traffic Rules -->
             <div class="step">
                 <h4>Section 1: Traffic Rules</h4>
