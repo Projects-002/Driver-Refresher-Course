@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+if(!isset($_SESSION['user'])){
+    header('location: index.php');
+}
+
 include('database/db.php');
 
 $sn = $_GET['uid'];
@@ -118,11 +123,25 @@ $l_name = $get_id['Last_Name'];
             background-color: #c7a64b;
             margin: 0 auto;
         }
+
+
+        @media print {
+               .print-sec{
+                display:none;
+               }
+
+            
+        }
     </style>
 </head>
 <body>
 
-    <div class="certificate-container">
+
+<div class="container mt-5 text-align-center d-flex justify-content-center print-sec">
+       <button type="button" onclick="window.print()" class="btn btn-warning">Print Certificate</button>
+</div>
+
+    <div class="certificate-container" id="content">
         <!-- Borders -->
         <div class="outer-border"></div>
         <div class="inner-border"></div>
@@ -166,6 +185,12 @@ $l_name = $get_id['Last_Name'];
             </div>
         </div>
     </div>
+
+
+
+    
+
+
 
 </body>
 </html>

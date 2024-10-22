@@ -127,11 +127,21 @@ include('database/db.php');
 
 
                             <?php
+
+                                if($row>0){
+                                       echo'
+                                 <p> '.$f_name.' '.$l_name.'</p>
                              
-                             echo'
-                                <p> '.$f_name.' '.$l_name.'</p>
+                                ';
+                                }else{
+
+                                    echo'
+                                        <p class="alert alert-warning" role="alert">Your Have not completed the course</p>
+                                    ';
+                                    
+                                }
                              
-                             ';
+                          
 
                              ?>
 

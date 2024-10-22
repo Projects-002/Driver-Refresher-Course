@@ -1,5 +1,10 @@
 /* styles.css */
 /* Minor adjustments since Bootstrap handles most of the layout */
+
+
+*{
+    font-family: sans-serif;
+}
 body {
     font-family: 'Arial', sans-serif;
 }
