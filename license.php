@@ -133,20 +133,19 @@ $sn = $_GET['sn'];
             showStep(currentStep);
 
             nextButton.addEventListener('click', function () {
-                if (currentStep < steps.length - 1) {
+                    let stepInputs = steps[currentStep].querySelectorAll('input[type="radio"]');
+                    let allAnswered = Array.from(stepInputs).some(input => input.checked);
 
-                    let answer = document.querySelector('input');
-                    if(answer.value == ''){
-                        alert('You need to answer all question before proceeding');
-                    }else{
-                              currentStep++;
-                    showStep(currentStep);
+                    if (!allAnswered) {
+                        alert('You need to answer all questions before proceeding.');
+                    } else {
+                        if (currentStep < steps.length - 1) {
+                            currentStep++;
+                            showStep(currentStep);
+                        }
                     }
-              
-                }
+              });
 
-
-            });
 
             previousButton.addEventListener('click', function () {
                 if (currentStep > 0) {
@@ -155,9 +154,39 @@ $sn = $_GET['sn'];
                 }
             });
 
-            document.getElementById('quizForm').addEventListener('submit', function (e) {
-                // Here you can add any additional validation before submission
-            });
+
+
+        document.getElementById('quizForm').addEventListener('submit', function (e) {
+                        // Array with correct answers for each question
+                        const correctAnswers = {
+                            q1: 'B',
+                            q2: 'B',
+                            q3: 'B',
+                            q4: 'B',
+                            q5: 'B',
+                            q6: 'A'
+                        };
+
+                        // Calculate score
+                        let totalQuestions = Object.keys(correctAnswers).length;
+                        let correctCount = 0;
+
+                        for (let question in correctAnswers) {
+                            let userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                            if (userAnswer && userAnswer.value === correctAnswers[question]) {
+                                correctCount++;
+                            }
+                        }
+
+                        let score = (correctCount / totalQuestions) * 100;
+
+                        // Check if score is less than 80%
+                        if (score < 80) {
+                            e.preventDefault();  // Prevent form submission
+                            alert('Your score is ' + Math.round(score) + '%. You need at least 80% to pass the test.');
+                        }
+                    });
+
         });
     </script>
 </body>
