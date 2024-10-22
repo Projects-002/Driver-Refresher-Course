@@ -104,14 +104,16 @@ try{
 
     // Determine if the user passed or failed
     if ($percentage_score >= 80) {  // Set passing score to 80%
+
+        
         echo "Congratulations! You passed the quiz.";
     } else {
+
+
         echo "
-        
-        
-        <p class='bg-danger text-light py-1 px-2'> Unfortunately, you did not pass. Please try again. </p>
-        
-       <a href='license.php'> <butto class='btn btn-secondary'>Back to Course</button></a>
+
+            <p class='bg-danger text-light py-1 px-2'> Unfortunately, you did not pass. Please try again. </p>   
+            <a href='license.php?uid='.$sn.''> <butto class='btn btn-secondary'>Back to Course</button></a>
         
         ";
     }

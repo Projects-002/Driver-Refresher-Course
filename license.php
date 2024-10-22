@@ -22,11 +22,11 @@ $sn = $_GET['sn'];
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Driving License Renewal Quiz</h2>
+        <h2 class="text-center">Driving License Renewal Test</h2>
 
         <!-- Progress Bar -->
-        <div class="progress mb-4">
-            <div id="progressBar" class="progress-bar bg-success" style="width: 0%">0%</div>
+        <div class="progress my-4">
+            <div id="progressBar" class="progress-bar bg-success" style="width: 0%"></div>
         </div>
 
         <?php
@@ -36,7 +36,8 @@ $sn = $_GET['sn'];
         ?>
             <!-- Section 1: Traffic Rules -->
             <div class="step">
-                <h4>Section 1: Traffic Rules</h4>
+
+                <h4 class="my-5">Section 1:    Traffic Rules</h4>
 
                 <div class="form-group">
                     <label>1. What should you do when you approach a stop sign?</label><br>
@@ -55,7 +56,7 @@ $sn = $_GET['sn'];
 
             <!-- Section 2: Road Safety -->
             <div class="step">
-                <h4>Section 2: Road Safety</h4>
+                <h4 class="my-5">Section 2: Road Safety</h4>
 
                 <div class="form-group">
                     <label>3. In rainy conditions, what should you do to avoid hydroplaning?</label><br>
@@ -74,7 +75,7 @@ $sn = $_GET['sn'];
 
             <!-- Section 3: Driving Techniques -->
             <div class="step">
-                <h4>Section 3: Driving Techniques</h4>
+                <h4 class="my-5">Section 3: Driving Techniques</h4>
 
                 <div class="form-group">
                     <label>5. What’s the first thing you should do if your vehicle begins to skid?</label><br>
@@ -126,7 +127,7 @@ $sn = $_GET['sn'];
 
                 const progressPercent = ((index + 1) / steps.length) * 100;
                 progressBar.style.width = progressPercent + '%';
-                progressBar.innerText = Math.round(progressPercent) + '%';
+                // progressBar.innerText = Math.round(progressPercent) + '%';
             }
 
             showStep(currentStep);
@@ -134,10 +135,17 @@ $sn = $_GET['sn'];
             nextButton.addEventListener('click', function () {
                 if (currentStep < steps.length - 1) {
 
-
-                    currentStep++;
+                    let answer = document.querySelector('input');
+                    if(answer.value == ''){
+                        alert('You need to answer all question before proceeding');
+                    }else{
+                              currentStep++;
                     showStep(currentStep);
+                    }
+              
                 }
+
+
             });
 
             previousButton.addEventListener('click', function () {
