@@ -439,7 +439,7 @@ $certified = mysqli_num_rows($result);
                           <a href="#">
                             <div class="notif-img">
                               <img
-                                src="assets/img/profile2.jpg"
+                                src="assets/img/profile.png"
                                 alt="Img Profile"
                               />
                             </div>
@@ -557,7 +557,7 @@ $certified = mysqli_num_rows($result);
                   >
                     <div class="avatar-sm">
                       <img
-                        src="assets/img/profile.jpg"
+                        src="assets/img/profile.png"
                         alt="..."
                         class="avatar-img rounded-circle"
                       />

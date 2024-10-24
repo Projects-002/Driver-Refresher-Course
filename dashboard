@@ -66,3 +66,6 @@
     </div>
 </body>
 </html>
+
+
+ALTER TABLE quiz_responses RENAME responses;
