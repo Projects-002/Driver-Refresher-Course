@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2024 at 11:41 PM
+-- Generation Time: Oct 24, 2024 at 09:53 PM
 -- Server version: 8.0.39
 -- PHP Version: 8.2.12
 
@@ -68,8 +68,8 @@ CREATE TABLE `responses` (
 --
 
 INSERT INTO `responses` (`id`, `Driver_Name`, `Category`, `Id_Num`, `score`, `submission_time`) VALUES
-(3, 'Ruth', 'B', '34567773', 100, '2024-10-22 13:52:43'),
-(4, 'Ismael', 'A', '27400044', 17, '2024-10-22 12:36:07');
+(3, 'Ruth', 'B', '34567773', 100, '2024-10-24 19:16:33'),
+(4, 'Ismael', 'A', '27400044', 83, '2024-10-24 19:19:56');
 
 --
 -- Indexes for dumped tables
