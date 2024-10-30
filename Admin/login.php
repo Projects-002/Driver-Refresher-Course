@@ -54,7 +54,7 @@ if(isset($_POST['submit'])){
 
 // Code with HOPE DEVELOPERS
 
-                        $sql = "SELECT * FROM drivers where Phone = '$phone'";
+                        $sql = "SELECT * FROM admins where Phone = '$phone'";
                         $result =  mysqli_query($conn, $sql);
 
 
@@ -73,7 +73,7 @@ if(isset($_POST['submit'])){
                                 </div>
                                 ";
                             }else{
-                                header('location: dashboard.php?uid='.$user_id.'');
+                                header('location: index.php?uid='.$user_id.'');
                                 session_start();
                                 $_SESSION['user'] = $user_id;
                             }
@@ -96,8 +96,8 @@ if(isset($_POST['submit'])){
 
 
 <div class="login-container">
-    <h2 class="text-center">User Login</h2>
-    <form action='index.php' method='POST'>
+    <h2 class="text-center">Admin Login</h2>
+    <form action='login.php' method='POST'>
         <div class="mb-3">
             <label for="email" class="form-label">Phone</label>
             <input type="tel" class="form-control" name='phone' id="phone" placeholder="Enter your phone" required>
@@ -111,7 +111,6 @@ if(isset($_POST['submit'])){
             <label class="form-check-label" for="rememberMe">Remember me</label>
         </div>
         <button type="submit" name='submit' class="btn btn-primary">Login</button>
-        <p class="mt-5">Login as <a href="admin/login.php">Admin</a></p>
     </form>
 </div>
 

@@ -135,7 +135,7 @@ $certified = mysqli_num_rows($result);
                 <div class="collapse" id="forms">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="forms/forms.html">
+                      <a href="forms/forms.php">
                         <span class="sub-item">Add users</span>
                       </a>
                     </li>
