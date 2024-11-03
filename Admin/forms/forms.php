@@ -3,7 +3,7 @@
 
 include("../database/db.php");
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+if(isset($_POST['add'])){
 
       $f_name = $_POST['f-name'];
       $l_name = $_POST['l-name'];
@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $result = mysqli_query($conn, $sql);  
 
         echo'
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-success" role="alert">
             User Added Sucessfully!
         </div>
         ';
@@ -44,17 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         ';
 
       }
-
-
-}
-
-
-
-
-
-
-
-
+   }
 ?>
 
 
@@ -64,7 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Capture</title>
+  <title>Drivers Refresher Course Admin</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -75,7 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 </style>
 
 <body >
-  <div class="container mt-5 w-50">
+  <div class="container mt-5 w-50 ">
     <h2>Adding User</h2>
     <form action="forms.php" method="POST">
       <div class="mb-3">

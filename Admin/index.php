@@ -213,10 +213,9 @@ $certified = mysqli_num_rows($result);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../documentation/index.html">
+                <a href="../logout.php">
                   <i class="fas fa-file"></i>
-                  <p>Documentation</p>
-                  <span class="badge badge-secondary">1</span>
+                  <p>Logout</p>
                 </a>
               </li>
             </ul>

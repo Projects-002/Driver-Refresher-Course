@@ -65,7 +65,7 @@ include('database/db.php');
                     ?>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Feedback</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="logout.php">Logout</a></li>
                 </ul>
             </nav>
         </header>
