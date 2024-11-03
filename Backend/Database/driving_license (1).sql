@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 09:53 PM
+-- Generation Time: Nov 03, 2024 at 09:25 PM
 -- Server version: 8.0.39
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `driving_license`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `SN` int NOT NULL,
+  `First_Name` varchar(100) DEFAULT NULL,
+  `Last_Name` varchar(100) DEFAULT NULL,
+  `Email` varchar(100) DEFAULT NULL,
+  `Phone` varchar(50) DEFAULT NULL,
+  `Pass` varchar(255) DEFAULT NULL,
+  `Reg_Date` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`SN`, `First_Name`, `Last_Name`, `Email`, `Phone`, `Pass`, `Reg_Date`) VALUES
+(1, 'Ruth', 'Muraguri', 'ruthmuraguri@gmail.com', '0768427812', 'ruth1234', '2024-10-30 23:37:47');
 
 -- --------------------------------------------------------
 
@@ -46,7 +69,10 @@ CREATE TABLE `drivers` (
 
 INSERT INTO `drivers` (`SN`, `First_Name`, `Last_Name`, `License_Class`, `Id_No`, `Email`, `Phone`, `Payment`, `Pass`, `Reg_Date`) VALUES
 (3, 'Ruth', 'Muraguri', 'B', 34567773, 'ruth@gmail.com', '0723076762', 1000, '@ruth123', '2024-10-15 00:06:50'),
-(4, 'Ismael', 'Bett', 'A', 27400044, 'bett@gmail.com', '0723070762', 1000, '@bett123', '2024-10-15 00:06:50');
+(4, 'Ismael', 'Bett', 'A', 27400044, 'bett@gmail.com', '0723070762', 1000, '@bett123', '2024-10-15 00:06:50'),
+(5, 'Ismael', 'Bett', 'A', 4025443, 'xyz.termux@gmail.com', '0727405667', 3000, '1234', '2024-10-30 23:23:52'),
+(11, 'Ruth', 'wanjiku', 'A', 433333, 'wanjiku@gmail.com', '0727405567', 300, '12345', '2024-11-03 22:29:11'),
+(13, 'Ismael', 'Kirui', 'C', 45566888, 'termux@gmail.com', '072546778989', 300, '123456', '2024-11-03 22:31:52');
 
 -- --------------------------------------------------------
 
@@ -68,12 +94,20 @@ CREATE TABLE `responses` (
 --
 
 INSERT INTO `responses` (`id`, `Driver_Name`, `Category`, `Id_Num`, `score`, `submission_time`) VALUES
-(3, 'Ruth', 'B', '34567773', 100, '2024-10-24 19:16:33'),
-(4, 'Ismael', 'A', '27400044', 83, '2024-10-24 19:19:56');
+(3, 'Ruth', 'B', '34567773', 83, '2024-10-28 14:11:06');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`SN`),
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Phone` (`Phone`),
+  ADD UNIQUE KEY `Pass` (`Pass`);
 
 --
 -- Indexes for table `drivers`
@@ -97,10 +131,16 @@ ALTER TABLE `responses`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `SN` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
