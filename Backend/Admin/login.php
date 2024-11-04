@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
 
 <div class="login-container">
     <h2 class="text-center">Admin Login</h2>
-    <form action='login.php' method='POST'>
+    <form action='login.php' method='POST' autocomplete="off">
         <div class="mb-3">
             <label for="email" class="form-label">Phone</label>
             <input type="tel" class="form-control" name='phone' id="phone" placeholder="Enter your phone" required>
