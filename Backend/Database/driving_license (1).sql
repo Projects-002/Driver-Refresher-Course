@@ -35,7 +35,7 @@ CREATE TABLE `admins` (
   `Phone` varchar(50) DEFAULT NULL,
   `Pass` varchar(255) DEFAULT NULL,
   `Reg_Date` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `admins`
