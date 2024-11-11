@@ -47,7 +47,7 @@ include('database/db.php');
     <title>User Dashboard</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
 </head>
 <body>
     <div class="container-fluid">
@@ -176,6 +176,23 @@ include('database/db.php');
     </div>
 
 
+
+    <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/67324dca2480f5b4f59bccc1/1ice7vo6r';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+    <!--End of Tawk.to Script-->
+
+
+
     <!-- Certificate styles -->
 
     <style>
@@ -291,5 +308,9 @@ include('database/db.php');
             // You can add JavaScript logic to enhance dashboard functionality if needed.
         }
     </script>
+
+
+
+
 </body>
 </html>
