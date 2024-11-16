@@ -802,11 +802,11 @@ include('../database/db.php');
             </nav>
             <div class="copyright">
               2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
+              <a href="">Ruth</a>
             </div>
             <div>
               Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
+              <a target="_blank" href="">Ruth Muraguri</a>.
             </div>
           </div>
         </footer>
