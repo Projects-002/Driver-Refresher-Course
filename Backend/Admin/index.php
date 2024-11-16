@@ -156,7 +156,7 @@ $certified = mysqli_num_rows($result);
                       </a>
                     </li> -->
                     <li>
-                      <a href="tables/datatables.html">
+                      <a href="tables/datatables.php">
                         <span class="sub-item">Drivers</span>
                       </a>
                     </li>
