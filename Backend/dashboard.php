@@ -157,7 +157,7 @@ include('database/db.php');
                             <div class="certificate-footer">
                                 <div class="signature">
                                     <hr>
-                                    <p>Ruth M</p>
+                                    <p>Hope</p>
                                     <small>Head Manager</small>
                                 </div>
                                 <div class="certificate-badge">
