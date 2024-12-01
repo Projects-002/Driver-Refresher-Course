@@ -104,6 +104,15 @@ include('database/db.php');
                             <!-- <p>Progress: 40%</p> -->
                             <button class="btn btn-success">Continue Course</button>
                         </div>
+                        <div class="course-card mt-5">
+                            <h3 class="ms-4">Payment Info</h3>
+                               <ul>
+                                <li>Paybill: 522522</li>
+                                <li>Account: Your Id Number</li>
+                               </ul>
+
+                               <kbd>NB: Keep the payment confirmation/ it will be used during licence renewal</kbd>
+                        </div>
                     </div>
                 </div>
             </div>
