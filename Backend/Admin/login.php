@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
                         $phone = $_POST['phone'];
                         $pass = $_POST['pass'];
 
-// Code with HOPE DEVELOPERS
+
 
                         $sql = "SELECT * FROM admins where Phone = '$phone'";
                         $result =  mysqli_query($conn, $sql);

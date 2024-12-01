@@ -3,7 +3,7 @@
 // Database configuration
 $servername = "localhost";
 $username = "root";
-$password = "22092209";
+$password = "";
 $dbname = "driving_license";
 
     // Create connection
